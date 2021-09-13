@@ -72,8 +72,16 @@ const NotesState = (props) => {
         setnotes(newnotes)
     }
 
-    const editNote = () =>{
-        
+    const editNote = (id,title,descrption, tag) =>{
+        for (let index = 0; index < notes.length; index++) {
+          const element = notes[index];
+          if(element._id === id){
+            element.title =title;
+            element.description=descrption;
+            element.tag=tag;
+          }
+          
+        }
     }
 
     return(
