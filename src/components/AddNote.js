@@ -8,6 +8,7 @@ export const AddNote = () => {
   const handleAddClick = (event) => {
     event.preventDefault();
       addNote(note.title,note.description,note.tag);
+      setnote({title:'',description:"",tag:""})
   };
 
   const [note, setnote] = useState({title:'',description:"",tag:""})
@@ -23,10 +24,13 @@ export const AddNote = () => {
         </label>
         <input
           type="text"
+          value={note.title}
           className="form-control"
           id="title"
           name="title"
           onChange={onChange}
+          minLength={3}
+          required
         />
       </div>
       <div className="mb-3">
@@ -41,6 +45,9 @@ export const AddNote = () => {
           id="description"
           rows="3"
           name="description"
+          minLength={3}
+          required
+          value={note.description}
           onChange={onChange}
         ></textarea>
         <div className="mb-3">
@@ -52,6 +59,7 @@ export const AddNote = () => {
           className="form-control"
           id="tag"
           name="tag"
+          value={note.tag}
           onChange={onChange}
         />
       </div>
@@ -59,6 +67,8 @@ export const AddNote = () => {
           type="submit"
           onClick={handleAddClick}
           className="btn btn-primary"
+          value={note.tag}
+          disabled = { note.title.length<5 ||note.description.length<5 }
         >
           Submit
         </button>
