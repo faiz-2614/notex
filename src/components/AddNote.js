@@ -66,7 +66,7 @@ export const AddNote = () => {
         <button
           type="submit"
           onClick={handleAddClick}
-          className="btn btn-primary"
+          className="btn btn-dark"
           value={note.tag}
           disabled = { note.title.length<5 ||note.description.length<5 }
         >
