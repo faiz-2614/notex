@@ -13,7 +13,7 @@ export const NoteItem = (props) => {
           <div className=" d-flex  justify-content-around">
             <h5 className="card-title">{note.title}</h5>
             <div>
-              <i className="fas fa-trash mx-2" onClick={()=>{deleteNote(note._id)}}></i>
+              <i className="fas fa-trash mx-2" onClick={()=>{deleteNote(note._id);props.showAlert("Deleted Successfully", "success")}}></i>
               <i className="fas fa-edit mx-2"onClick={()=>{updateNote(note)}}></i>
             </div>
           </div>

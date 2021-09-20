@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router'
 
-const Login = () => {
+const Login = (props) => {
 
   const [credentials, setcredentials] = useState({email:"",password:""})
 
@@ -16,16 +16,17 @@ const Login = () => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({name:credentials.email,password:credentials.password}) 
+            body: JSON.stringify({email:credentials.email,password:credentials.password}) 
           });
           const json = await response.json();
           console.log(json)
           if(json.success){
-            localStorage.setItem('token',json.authtoken)
+            localStorage.setItem('token', json.authtoken)
             history.push("/");
+            
           }
           else{
-            alert("ok")
+            props.showAlert("Invalid Credentials","danger")
           }
     }
 

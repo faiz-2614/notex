@@ -2,7 +2,8 @@ import React,{useState} from "react";
 import { useHistory } from "react-router";
 
 
-const SignUp = () => {
+
+const SignUp = (props) => {
     const [credentials, setcredentials] = useState({name:"",email:"",password:""})
 
   let history  = useHistory();
@@ -22,11 +23,13 @@ const SignUp = () => {
           const json = await response.json();
           console.log(json)
           if(json.success){
+              
             localStorage.setItem('token',json.authtoken)
             history.push("/");
+            props.showAlert("Signed Up","success")
           }
           else{
-            alert("ok")
+            props.showAlert("Signed Up","danger")
           }
     }
 
